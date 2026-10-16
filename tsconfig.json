@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "@ffxixslh/pro-components": ["src"],
+      "@ffxixslh/pro-components/*": ["src/*", "*"]
+    }
+  },
+  "include": [".dumirc.ts", ".fatherrc.ts", "src/**/*", "docs/**/*"]
+}
