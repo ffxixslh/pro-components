@@ -4,7 +4,7 @@ function attachPropertiesToComponent<C, P extends Record<string, any>>(
 ): C & P {
   const ret = component as any;
   for (var key in properties) {
-    if (Object.hasOwn(properties, key)) {
+    if (Object.prototype.hasOwnProperty.call(properties, key)) {
       ret[key] = properties[key];
     }
   }
