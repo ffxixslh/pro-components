@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "declaration": true,
+    "lib": ["DOM", "ES2022"],
+    "jsx": "react-jsx",
+    "target": "ES2022",
+    "noEmit": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "baseUrl": "./",
-    "paths": {
-      "@@/*": [".dumi/tmp/*"],
-      "@ffxixslh/pro-components": ["src"],
-      "@ffxixslh/pro-components/*": ["src/*", "*"]
-    }
+    "types": ["@rslib/core/types"],
+    "useDefineForClassFields": true,
+    "rootDir": "src",
+
+    /* modules */
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    /* type checking */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "include": [".dumirc.ts", ".fatherrc.ts", "src/**/*", "docs/**/*"]
+  "include": ["src"]
 }

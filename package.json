@@ -1,56 +1,68 @@
 {
   "name": "@ffxixslh/pro-components",
-  "version": "0.0.1",
   "description": "Enhanced Antd pro-components.",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
-    "build": "father build",
-    "build:watch": "father dev",
-    "docs:build": "dumi build",
-    "docs:preview": "dumi preview",
-    "prepare": "husky install && dumi setup",
-    "doctor": "father doctor",
-    "lint": "pnpm biome format --write ./src",
-    "prepublishOnly": "father doctor && npm run build"
+  "version": "0.0.2",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
+  "types": "./dist/index.d.ts",
   "authors": [
     "lhq12230@gmail.com"
   ],
-  "license": "MIT",
   "files": [
     "dist"
   ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
-    "@ant-design/pro-components": "^3.0.0-beta.1",
-    "antd": "^6.0.0"
+  "scripts": {
+    "build": "rslib",
+    "check": "biome check --write",
+    "dev": "rslib --watch",
+    "doc": "rspress dev",
+    "doc:build": "rspress build",
+    "doc:preview": "rspress preview",
+    "format": "biome format --write",
+    "test": "rstest",
+    "test:watch": "rstest --watch"
   },
   "devDependencies": {
     "@ant-design/pro-components": "^3.1.15-7",
     "@biomejs/biome": "2.5.15",
-    "@commitlint/cli": "^17.8.1",
-    "@commitlint/config-conventional": "^17.8.1",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
-    "@umijs/lint": "^4.7.24",
+    "@rsbuild/plugin-react": "^2.1.1",
+    "@rslib/core": "^1.0.3",
+    "@rspress/core": "^2.0.22",
+    "@rspress/plugin-api-docgen": "^2.0.22",
+    "@rspress/plugin-preview": "^2.0.22",
+    "@rstest/adapter-rslib": "^0.12.2",
+    "@rstest/core": "^0.12.2",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "antd": "^6.6.6",
-    "dumi": "^2.4.49",
-    "father": "^4.6.39",
-    "husky": "^8.0.3",
+    "happy-dom": "^20.14.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rc-util": "^5.44.4"
-  }
+    "rsbuild-plugin-workspace-dev": "^1.0.0",
+    "typescript": "^6.0.3",
+    "@ffxixslh/utils": "^0.0.1"
+  },
+  "peerDependencies": {
+    "@ant-design/pro-components": "^3.0.0-beta.1",
+    "antd": "^6.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": true
 }

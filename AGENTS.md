@@ -1,0 +1,28 @@
+# AGENTS.md
+
+## Commands
+
+- `pnpm run build` - Build the library for production
+- `pnpm run dev` - Turn on watch mode, watch for changes and rebuild the library
+- `pnpm run test` - Run tests
+- `pnpm run test:watch` - Run tests in watch mode
+
+## Docs
+
+- Rslib: https://rslib.rs/llms.txt
+- Rsbuild: https://rsbuild.rs/llms.txt
+- Rspack: https://rspack.rs/llms.txt
+- Rstest: https://rstest.rs/llms.txt
+- Rspress: https://rspress.rs/llms.txt
+
+## Tools
+
+### Biome
+
+- Run `pnpm run check` to lint your code
+- Run `pnpm run format` to format your code
+
+### Rspress
+
+- Run `pnpm run doc` to start the Rspress documentation dev server, which will also start Rslib in watch mode
+- Run `pnpm run doc:build` to build the documentation

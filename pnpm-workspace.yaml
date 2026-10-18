@@ -4,3 +4,5 @@ allowBuilds:
   core-js: true
   core-js-pure: true
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@ffxixslh/utils@0.0.1'
