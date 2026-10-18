@@ -4,7 +4,7 @@ import {
   type ProTableProps,
 } from "@ant-design/pro-components";
 import type { ProFormInstance } from "@ant-design/pro-components/lib/index.js";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { RTableContext } from "./Context";
 
 export interface RTableProps<T, U, V>
