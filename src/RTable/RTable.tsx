@@ -2,13 +2,14 @@ import {
   type ActionType,
   ProTable,
   type ProTableProps,
-} from "@ant-design/pro-components";
-import type { ProFormInstance } from "@ant-design/pro-components/lib/index.js";
-import { useRef } from "react";
-import { RTableContext } from "./Context";
+} from '@ant-design/pro-components';
+import type { ProFormInstance } from '@ant-design/pro-components/lib/index.js';
+import { useRef } from 'react';
+import { RTableContext } from './Context';
 
 export interface RTableProps<T, U, V>
-  extends Omit<ProTableProps<T, U, V>, "request"> {
+  extends Omit<ProTableProps<T, U, V>, 'request'> {
+  /** 自动转换数组响应结果 */
   request?: (params: U) =>
     | Promise<T[]>
     | Promise<{
@@ -18,13 +19,11 @@ export interface RTableProps<T, U, V>
       }>;
 }
 
-const RTable = <
+export function RTable<
   T extends Record<string, any>,
   U extends Record<string, any>,
   V,
->(
-  props: RTableProps<T, U, V>,
-) => {
+>(props: RTableProps<T, U, V>) {
   const actionRef = useRef<ActionType>();
   const formRef = useRef<ProFormInstance>();
 
@@ -65,6 +64,4 @@ const RTable = <
       />
     </RTableContext.Provider>
   );
-};
-
-export default RTable;
+}

@@ -18,7 +18,11 @@ export default defineConfig({
   },
   plugins: [
     pluginApiDocgen({
-      entries: {},
+      entries: {
+        RTable: './src/RTable/RTable.tsx',
+        RButton: './src/RButton/RButton.tsx',
+        RForm: './src/RForm/RForm.tsx',
+      },
       apiParseTool: 'react-docgen-typescript',
     }),
     pluginPreview(),

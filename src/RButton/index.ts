@@ -1,6 +1,6 @@
-import { attachPropertiesToComponent } from "@ffxixslh/utils";
-import RButton from "./RButton";
+import { attachPropertiesToComponent } from '@ffxixslh/utils';
+import { RButton as _RButton, type RButtonProps } from './RButton';
 
-export type { RButtonProps } from "./RButton";
+export type { RButtonProps };
 
-export default attachPropertiesToComponent(RButton, {});
+export const RButton = attachPropertiesToComponent(_RButton, {});

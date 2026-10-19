@@ -1,2 +1,3 @@
-export { default as RButton, type RButtonProps } from "./RButton";
-export { default as RTable, type RTableProps } from "./RTable";
+export * from './RButton';
+export * from './RForm';
+export * from './RTable';

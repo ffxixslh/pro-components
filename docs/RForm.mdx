@@ -1,0 +1,27 @@
+# RForm
+
+## 基本使用
+
+```tsx preview
+import { RForm } from '@ffxixslh/pro-components';
+import { sleep } from '@ffxixslh/utils';
+import { ProFormText } from '@ant-design/pro-components';
+
+export default () => {
+  return (
+    <RForm
+      onFinish={async (formData) => {
+        console.log(formData);
+        await sleep(1000);
+        return '操作成功';
+      }}
+    >
+      <ProFormText name="name" label="Name" />
+    </RForm>
+  );
+}
+```
+
+## API
+
+<API moduleName="RForm" />

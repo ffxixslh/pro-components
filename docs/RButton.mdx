@@ -4,14 +4,14 @@
 
 ```tsx preview
 import { RButton } from "@ffxixslh/pro-components";
-import { message } from "antd";
+import { sleep } from "@ffxixslh/utils";
 
 export default () => {
   return (
     <RButton
       key={"reload"}
       onClick={async () => {
-        await message.loading("刷新中", 1);
+        await sleep(1000);
       }}
     >
       刷新
@@ -20,3 +20,7 @@ export default () => {
 };
 
 ```
+
+## API
+
+<API moduleName="RButton" />
