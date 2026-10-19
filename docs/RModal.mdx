@@ -1,0 +1,102 @@
+# RModal
+
+## 基本使用
+
+```tsx preview
+import { RButton, RModal } from '@ffxixslh/pro-components';
+import { useContext, useState } from 'react';
+
+const Foo = () => {
+  const rModalCtx = useContext(RModal.Context);
+
+  return (
+    <RButton
+      onClick={() => {
+        rModalCtx?.resolve?.('foo');
+        rModalCtx?.close?.();
+      }}
+    >
+      Resolve "foo"
+    </RButton>
+  );
+};
+
+export default () => {
+  const [value, setValue] = useState<string>()
+
+  return (
+    <>
+      <RButton
+        key={'open'}
+        onClick={async () => {
+          const result = await RModal.open<string>({
+            title: 'foo',
+            children: <Foo />,
+          });
+          setValue(result)
+        }}
+      >
+        打开
+      </RButton>
+      <p>
+        Resolve：{value}
+      </p>
+    </>
+  );
+};
+
+```
+
+## 封装 ProForm
+
+```tsx preview
+import { ProFormText } from '@ant-design/pro-components';
+import { RButton, RModal } from '@ffxixslh/pro-components';
+import { sleep } from '@ffxixslh/utils';
+import { useContext, useState } from 'react';
+
+const Foo = () => {
+  const rModalCtx = useContext(RModal.Context);
+
+  return (
+    <RModal.ProForm
+      onFinish={async (formData) => {
+        await sleep(1000);
+        rModalCtx.resolve(formData.name);
+        return '操作成功'
+      }}
+    >
+      <ProFormText name={'name'} label={'Name'} />
+    </RModal.ProForm>
+  );
+};
+
+export default () => {
+  const [value, setValue] = useState<{ name: string }>()
+
+  return (
+    <>
+      <RButton
+        key={'open'}
+        onClick={async () => {
+          const result = await RModal.open<{ name: string }>({
+            title: '封装 ProForm',
+            children: <Foo />,
+          });
+          setValue(result)
+        }}
+      >
+        打开
+      </RButton>
+      <p>
+        Resolve：{JSON.stringify(value)}
+      </p>
+    </>
+  );
+};
+
+```
+
+## API
+
+<API moduleName="RModal" />

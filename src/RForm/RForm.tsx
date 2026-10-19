@@ -1,18 +1,22 @@
-import { ProForm, type ProFormProps } from '@ant-design/pro-components';
+import {
+  ProForm,
+  type ProFormInstance,
+  type ProFormProps,
+} from '@ant-design/pro-components';
 import { message } from 'antd';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { RFormContext } from './Context';
 
-export interface RFormProps<T = Record<string, any>>
-  extends Omit<ProFormProps<T>, 'onFinish'> {
+export interface RFormProps<T = Record<string, any>, U = Record<string, any>>
+  extends Omit<ProFormProps<T, U>, 'onFinish'> {
   /** 自动提示返回的字符串 */
   onFinish?: (formData: T) => Promise<boolean | string>;
 }
 
-export function RForm<T>(props: RFormProps<T>) {
+export function RForm<T, U>(props: RFormProps<T, U>) {
   const { onFinish: propOnFinish, ...rest } = props;
   const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
+  const formRef = useRef<ProFormInstance>();
 
   const onFinish: ProFormProps<T>['onFinish'] = async (formData) => {
     if (!propOnFinish) {
@@ -22,12 +26,12 @@ export function RForm<T>(props: RFormProps<T>) {
     try {
       const result = await propOnFinish(formData);
       if (typeof result === 'string') {
-        messageApi.success(result);
+        message.success(result);
       }
       return true;
     } catch (error) {
       if (error instanceof Error) {
-        messageApi.error(error.message);
+        message.error(error.message);
       }
       return false;
     } finally {
@@ -36,9 +40,13 @@ export function RForm<T>(props: RFormProps<T>) {
   };
 
   return (
-    <RFormContext.Provider value={{ loading, setLoading }}>
-      {contextHolder}
-      <ProForm<T> {...rest} loading={loading} onFinish={onFinish} />
+    <RFormContext.Provider value={{ loading, setLoading, formRef }}>
+      <ProForm<T, U>
+        {...rest}
+        formRef={formRef}
+        loading={loading}
+        onFinish={onFinish}
+      />
     </RFormContext.Provider>
   );
 }

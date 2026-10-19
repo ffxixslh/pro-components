@@ -6,3 +6,5 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - '@ffxixslh/utils@0.0.1 || 0.0.3'
+overrides:
+  '@ffxixslh/utils': link:../utils

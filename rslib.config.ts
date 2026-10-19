@@ -1,3 +1,4 @@
+import { pluginLess } from '@rsbuild/plugin-less';
 import { pluginMdx } from '@rsbuild/plugin-mdx';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { defineConfig } from '@rslib/core';
@@ -8,5 +9,5 @@ export default defineConfig({
   output: {
     target: 'web',
   },
-  plugins: [pluginReact(), pluginMdx()],
+  plugins: [pluginReact(), pluginMdx(), pluginLess()],
 });

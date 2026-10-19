@@ -15,27 +15,31 @@ export function RButton(props: RButtonProps) {
     onClick: propClick,
     icon: propIcon,
     loading: propLoading,
+    disabled: propDisabled,
     ...rest
   } = props;
   const [loading, setLoading] = useState(propLoading ?? false);
   const rTableCtx = useContext(RTableContext);
 
+  const onClick: ButtonProps['onClick'] = async (e) => {
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      await propClick?.(e);
+
+      await rTableCtx?.actionRef.current?.reloadAndRest?.();
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Button
       {...rest}
       icon={loading ? <LoadingOutlined /> : propIcon}
-      onClick={async (e) => {
-        e.preventDefault();
-
-        setLoading(true);
-        try {
-          await propClick?.(e);
-
-          await rTableCtx?.actionRef.current?.reloadAndRest?.();
-        } finally {
-          setLoading(false);
-        }
-      }}
+      disabled={propDisabled ?? !!loading}
+      onClick={onClick}
     />
   );
 }
