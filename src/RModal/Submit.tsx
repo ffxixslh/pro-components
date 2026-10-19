@@ -1,6 +1,6 @@
 import { RButton, type RButtonProps } from '../RButton';
 import { useRModal } from './useRModal';
-import { useRModalProForm } from './useRModalProFOrm';
+import { useRModalProForm } from './useRModalProForm';
 
 export interface RModalSubmitProps extends RButtonProps {}
 

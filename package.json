@@ -2,7 +2,7 @@
   "name": "@ffxixslh/pro-components",
   "description": "Enhanced Antd pro-components.",
   "homepage": "https://github.com/ffxixslh/pro-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "exports": {
     ".": {

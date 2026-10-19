@@ -1,5 +1,5 @@
 import { RButton, type RButtonProps } from '../RButton';
-import { useRModalProForm } from './useRModalProFOrm';
+import { useRModalProForm } from './useRModalProForm';
 
 export interface RModalResetProps extends RButtonProps {}
 
